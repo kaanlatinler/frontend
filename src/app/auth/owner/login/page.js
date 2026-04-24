@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation"; // useRouter import
-import { LoginOwner } from "../../../services/api";
+import { LoginOwner } from "../../../../services/api";
+import Link from "next/link";
 
 const Login = () => {
   const router = useRouter(); // useRouter kullanımı
@@ -19,10 +20,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(data);
       const res = await LoginOwner(data);
       if (res.data.success) {
-        sessionStorage.setItem("token", res.data.token);
+        localStorage.setItem("token", res.data.token);
         Swal.fire({
           icon: "success",
           title: "Başarılı",
@@ -64,9 +64,9 @@ const Login = () => {
         <div className="col-lg-5 col-12">
           <div id="auth-left">
             <div className="auth-logo">
-              <a href="/">
+              <Link href="/">
                 <img src="/assets/images/logo/logo.png" alt="Logo" />
-              </a>
+              </Link>
             </div>
             <h1 className="auth-title">Log in.</h1>
             <p className="auth-subtitle mb-5">

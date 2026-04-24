@@ -1,3 +1,4 @@
+import { AuthProvider } from "@/context/AuthContext";
 import Script from "next/script";
 
 export const metadata = {
@@ -7,58 +8,79 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="tr">
-      <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <AuthProvider>
+      <html lang="tr">
+        <head>
+          <meta charSet="UTF-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
 
-        <link rel="stylesheet" href="/assets/css/bootstrap.css" />
+          <link rel="stylesheet" href="/assets/css/bootstrap.css" />
+          <link rel="stylesheet" href="/assets/css/custom.css" />
 
-        <link
-          rel="stylesheet"
-          href="/assets/vendors/sweetalert2/sweetalert2.min.css"
-        />
+          <link
+            rel="stylesheet"
+            href="/assets/vendors/sweetalert2/sweetalert2.min.css"
+          />
 
-        <link
-          rel="stylesheet"
-          href="/assets/vendors/perfect-scrollbar/perfect-scrollbar.css"
-        />
-        <link
-          rel="stylesheet"
-          href="/assets/vendors/bootstrap-icons/bootstrap-icons.css"
-        />
-        <link rel="stylesheet" href="assets/css/app.css" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
-          rel="stylesheet"
-        />
-        <link rel="stylesheet" href="/assets/css/bootstrap.css" />
-        <link
-          rel="stylesheet"
-          href="/assets/vendors/bootstrap-icons/bootstrap-icons.css"
-        />
-        <link rel="stylesheet" href="/assets/css/app.css" />
-        <link rel="stylesheet" href="/assets/css/pages/auth.css" />
-      </head>
-      <body>
-        {children}
+          <link
+            rel="stylesheet"
+            href="/assets/vendors/perfect-scrollbar/perfect-scrollbar.css"
+          />
+          <link
+            rel="stylesheet"
+            href="/assets/vendors/bootstrap-icons/bootstrap-icons.css"
+          />
+          <link rel="stylesheet" href="/assets/css/app.css" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+            rel="stylesheet"
+          />
+          <link rel="stylesheet" href="/assets/css/pages/auth.css" />
+          <link rel="stylesheet" href="/assets/vendors/chartjs/Chart.min.css" />
+          <link rel="stylesheet" href="/assets/vendors/dripicons/webfont.css" />
+          <link rel="stylesheet" href="/assets/css/pages/dripicons.css" />
+        </head>
+        <body style={{ backgroundColor: "#f2f7ff" }}>
+          {children}
 
-        <Script
-          src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"
-          strategy="beforeInteractive"
-        />
-        <Script
-          src="/assets/js/bootstrap.bundle.min.js"
-          strategy="beforeInteractive"
-        />
-        <Script
-          src="/assets/vendors/sweetalert2/sweetalert2.all.min.js"
-          strategy="beforeInteractive"
-        />
+          <Script
+            src="/assets/vendors/chartjs/Chart.min.js"
+            strategy="beforeInteractive"
+          />
+          <Script
+            src="/assets/js/pages/ui-chartjs.js"
+            strategy="beforeInteractive"
+          />
 
-        <Script src="/assets/js/main.js" strategy="beforeInteractive" />
-      </body>
-    </html>
+          <Script
+            src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"
+            strategy="beforeInteractive"
+          />
+          <Script
+            src="/assets/js/bootstrap.bundle.min.js"
+            strategy="beforeInteractive"
+          />
+          <Script
+            src="/assets/vendors/sweetalert2/sweetalert2.all.min.js"
+            strategy="beforeInteractive"
+          />
+
+          {/* <Script src="/assets/js/main.js" strategy="beforeInteractive" /> */}
+
+          {/* <Script
+            src="assets/vendors/apexcharts/apexcharts.js"
+            strategy="beforeInteractive"
+          /> */}
+          {/* <Script
+            src="assets/js/pages/dashboard.js"
+            strategy="beforeInteractive"
+          /> */}
+        </body>
+      </html>
+    </AuthProvider>
   );
 }

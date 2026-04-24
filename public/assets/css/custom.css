@@ -1,0 +1,45 @@
+.business-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    height: 300px;
+
+}
+
+.business-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.business-card-img {
+    transition: transform 0.3s ease;
+    object-fit: cover;
+    width: 100%;
+}
+
+.business-card:hover .business-card-img {
+    transform: scale(1.1);
+}
+
+.business-card-img-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    transition: background 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.business-card:hover .business-card-img-overlay {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.card-title {
+    margin: 0;
+    text-align: center;
+}

@@ -3,13 +3,14 @@
 import React, { useState, useEffect } from "react";
 import PageHeading from "@/Components/PageHeading";
 import SideBar from "@/Components/SideBar";
-import MainSection from "@/partials/MainSection";
 
 import {
   GetOwnerByToken,
   GetBusinessCount,
-  GetEmployeeCount,
+  GetEmployeeCount
 } from "@/services/api";
+import BusinessesSection from "@/partials/BusinessesSection";
+
 
 async function getOwner({ token }) {
   try {
@@ -40,7 +41,7 @@ async function getEmployeeCount({ token }) {
   }
 }
 
-export default function Home() {
+export default function MyBusinesses() {
   const [sidebarActive, setSidebarActive] = useState(true);
   const [owner, setOwner] = useState(null);
   const [businessCount, setBusinessCount] = useState(null);
@@ -66,6 +67,7 @@ export default function Home() {
   const toggleSidebar = () => {
     setSidebarActive(!sidebarActive);
   };
+
   return (
     <div id="app">
       <SideBar isActive={sidebarActive} toggleSidebar={toggleSidebar} />
@@ -79,12 +81,12 @@ export default function Home() {
             <i className="bi bi-justify fs-3"></i>
           </a>
         </header>
-        <PageHeading title="Anasayfa" />
+        <PageHeading title="İşletmelerim" />
         <div className="page-content">
-          <MainSection
+          <BusinessesSection
             profile={owner}
-            business={businessCount}
-            employee={employeeCount}
+            businessCount={businessCount}
+            employeeCount={employeeCount}
           />
         </div>
       </div>
